@@ -1,0 +1,126 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>{% block title %}{% endblock %} | Марийский НИИСХ - филиал ФБГНУ ФАНЦ Северо-Востока | Официальный
+		сайт</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width">
+	<meta name="description" content="{% block description %}{% endblock %}">
+	<link rel="icon" type="image/png" href="favicon.png"/>
+	<link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
+	<link href="{% static 'css/style.css' %}" rel="stylesheet">
+	<link href="{% static 'css/news.css' %}" rel="stylesheet">
+	<link href="{% static 'css/slide.css' %}" rel="stylesheet">
+	<link href="{% static 'css/trend.css' %}" rel="stylesheet">
+	<link href="{% static 'css/docs.css' %}" rel="stylesheet">
+	<!--[if lte IE 8]>
+		<script src="{% static 'js/html5shiv.js' %}"></script>
+		<link href="{% static 'css/ie8.css' %}" rel="stylesheet">
+	<![endif]-->
+</head>
+<body>
+<input type="checkbox" id="nav" hidden>
+<nav class="nav_side">
+<label for="nav" class="cross" onclick>✕</label>
+	<ul class="way">
+		<li class="index"><a href="{% url 'siteapp:index' %}">марниисх.рф</a>
+			<ul>
+			{% block ways_nav %}
+			    {% include "ways.html" %}
+			{% endblock %}
+			</ul>
+		</li>
+	</ul>
+	<ul class="side">
+		<li class="index"><span><img src="{% static 'img/sprite_nav.png' %}"></span><a href="{% url 'siteapp:index' %}">Главная</a></li
+		><li class="news"><span><img src="{% static 'img/sprite_nav.png' %}"></span><a href="{% url 'siteapp:News2024' %}">Новости</a></li
+		><li class="prod"><span><img src="{% static 'img/sprite_nav.png' %}"></span><a href="{% url 'siteapp:Prod' %}">Продукция</a>
+			<ul>
+				<li><a href="{% url 'siteapp:Grain' %}">Зерновые</a></li
+				><li><a href="{% url 'siteapp:Potato' %}">Картофель</a></li
+				><li><a href="{% url 'siteapp:Grass' %}">Многолетние травы</a></li
+				><li><a href="{% url 'siteapp:Jim' %}">Жимолость</a></li>
+			</ul>
+		</li
+		><li class="about"><span><img src="img/sprite_nav.png"></span><a href="{% url 'siteapp:About' %}">О нас</a>
+			<ul>
+				<li><a href="{% url 'siteapp:About' %}">История института</a></li
+				><li><a href="{% url 'siteapp:Trend' %}">Направления деятельности</a></li
+				><li><a href="{% url 'siteapp:Progress' %}">Достижения</a></li
+				><li><a href="{% url 'siteapp:Article' %}">Статьи</a></li>
+			</ul>
+		</li
+		><li class="contact"><span><img src="{% static 'img/sprite_nav.png' %}"></span><a href="{% url 'siteapp:Contact' %}">Контакты</a></li
+		><li class="price"><span><img src="{% static 'img/sprite_nav.png' %}"></span><a href="{% url 'siteapp:Price' %}">Прайс</a></li
+		><li class="docs"><span><img src="{% static 'img/sprite_nav.png' %}"></span><a href="{% url 'siteapp:Docs' %}">Документы</a></li
+		><li class="map"><span><img src="{% static 'img/sprite_nav.png' %}"></span><a href="{% url 'siteapp:Map' %}">Карта сайта</a></li>
+	</ul>
+</nav>
+<div class="mask">
+	<label for="nav" onclick></label>
+</div>
+<div class="maket">
+<label for="nav" class="burger" onclick>МЕНЮ</label>
+<header>
+	<h1>
+		<span class="n1">
+			<span>Марийский</span>
+			<span>НИИ</span>
+		</span
+		><span class="n2">СХ</span
+		><span class="n3">
+			<span></span>
+			<span>филиал ФГБНУ&nbspФАНЦ Северо-Востока</span>
+		</span
+		><a class="logo" href="{% url 'siteapp:index' %}">
+			<img src="{% static 'img/Logo.png' %}" alt="Логотип Марийский НИИСХ">
+		</a>
+	</h1>
+	<nav class="nav_main">
+		<ul>
+			<li class="index"><span><img src="{% static 'img/sprite_nav.png' %}"></span><a href="{% url 'siteapp:index' %}">Главная</a></li
+			><li class="news"><span><img src="{% static 'img/sprite_nav.png' %}"></span><a href="{% url 'siteapp:News2024' %}">Новости</a></li
+			><li class="prod"><span><img src="{% static 'img/sprite_nav.png' %}"></span><a href="{% url 'siteapp:Prod' %}">Продукция</a></li
+			><li class="about"><span><img src="{% static 'img/sprite_nav.png' %}"></span><a href="{% url 'siteapp:About' %}">О нас</a></li
+			><li class="contact"><span><img src="{% static 'img/sprite_nav.png' %}"></span><a href="{% url 'siteapp:Contact' %}">Контакты</a></li>
+		</ul>
+	</nav>
+	<a class="tel" href="tel:+78362538039"><span><b class="phone"><i></i></b></span> <strong>+7 (8362) 53-80-39</strong></a>
+	<ul class="head_way">
+	{% block ways_header %}
+	    {% include "ways.html" %}
+	{% endblock %}
+	</ul>
+</header>
+<main>
+	{% block content %}{% endblock %}
+</main>
+</div>
+<footer>
+	<div class="contacts">
+		<div>
+			<p><span class="fonts_ico">©</span> 2016-2024</p>
+			<p>Марийский НИИСХ - филиал ФГБНУ&nbsp;ФАНЦ Северо-Востока</p>
+			<h4><span class="home_ico"><em></em><i></i></span> Почтовый адрес</h4>
+			<p class="adress">425231, Россия, Республика&nbsp;Марий&nbsp;Эл, Медведевский&nbsp;район, посёлок&nbsp;Руэм, улица&nbsp;Победы,&nbsp;дом&nbsp;№10</p>
+			<h4><span class="email_ico"></span> Электронный адрес</h4>
+			<p><a href="mailto:marniish@yandex.ru">marniish<span class="fonts_ico">@</span>yandex.ru</a></p>
+		</div>
+		<div>
+			<h4><span class="phone"><i></i></span> Телефоны</h4>
+			<p>Приёмная: <a href="tel:+78362538039">+7 (8362) 53-80-39</a></p>
+			<p>Директор:<a href="tel:+78362538010"> +7 (8362) 53-80-10</a></p>
+			<h4><span class="phone"><i></i></span></span> Факс</h4>
+			<p>+7 (8362) 53-80-82</p>
+		</div>
+	</div>
+	<div class="author">
+		<h4><span class="fonts_ico"><img src="img/star.png"></span> Разработчик</h4>
+		<a class="vk" href="http://vk.com/koalder">vk</a>
+		<a class="email_ico" href="mailto:koalder@yandex.ru"></a>
+	</div>
+</footer>
+</body>
+</html>

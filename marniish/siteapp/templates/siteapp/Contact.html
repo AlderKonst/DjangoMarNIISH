@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block content %}
+	<h2>Контактная информация</h2>
+	<div class="pages" id="contact">
+		<div>
+			<article>
+				<h3><b>Юридический адрес</b></h3>
+				<p>425231, Россия, Республика Марий Эл, Медведевский район, п. Руэм, ул. Победы, д. 10</p>
+			</article>
+			<article>
+				<h3><b>Режим работы</b></h3>
+				<p><span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span id="red">Сб</span><span id="red">Вс</span></p>
+				<p>C 8-00 ч до 17-00 ч. Перерыв на обед с 12-00 ч до 13-00 ч.</p>
+			</article>
+			<article>
+				<h3><b>Директор института</b></h3>
+				<p>Виноградов&nbsp;Георгий&nbsp;Михайлович, к.&nbsp;с.-&nbsp;х.&nbsp;н.</p>
+				<a href="tel:+78362538010">+7 (8362) 53-80-10</a>
+			</article>
+			<article>
+				<h3><b>Приёмная</b></h3>
+				<p>Кольцова&nbsp;Валентина&nbsp;Поликарповна, специалист отд. кадров</p>
+				<a href="tel:+78362538039">+7 (8362) 53-80-39</a>
+			</article>
+			<article>
+				<h3><b>Зам. директора по научной работе</b></h3>
+				<p>Замятин&nbsp;Сергей&nbsp;Анатольевич, к.&nbsp;с.-&nbsp;х.&nbsp;н.</p>
+				<a href="tel:+78362538082">+7 (8362) 53-80-82</a>
+			</article>
+			<article>
+				<h3><b>Бухгалтерия</b></h3>
+				<p>Ялаева&nbsp;Надежда&nbsp;Николаевна, глав. бух.</p>
+				<a href="tel:+78362538366">+7 (8362) 53-83-66</a>
+			</article>
+			<article>
+				<p>ИНН 1207001789 КПП 120701001 ОКОНХ 95140 ОКПО 00670031 ОГРН 1021201051057</p>
+			</article>
+		</div>
+		<div>
+			<article>
+				<a href="https://yandex.ru/maps/?um=constructor%3A04a93cdec4e7da2828396ef9505f7a3acbd97734afb1506ea2e3708d12fb46ee&amp;source=constructorStatic" target="_blank">
+					<img src="{% static 'img/home.jpg' %}" alt="Здание НИИ"/>
+					<img src="{% static 'img/map.jpg' %}" alt="Кликните по фото или здесь, чтобы показать месторасположение НИИ на Яндекс.карте"/>
+				</a>
+				<fieldset>
+					<legend>Напишите нам!</legend>
+					<form name="ContactForm" method="post">
+						{% csrf_token %}
+						{{form.as_table}}
+						<input type="submit" id="submit" value="Отправить"/>
+					</form>
+				</fieldset>
+			</article>
+		</div>
+	</div>
+{% endblock %}

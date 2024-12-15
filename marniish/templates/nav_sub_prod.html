@@ -1,0 +1,10 @@
+<!-- Минименю  под главным меню для блока страниц об возделываемых культур в НИИ-->
+{% block nav_sub_about %}
+<nav class="nav_sub">
+	<span>Ещё ↑</span>
+	<a href="{% url 'siteapp:Grain' %}">Зерновые</a>
+	<a href="{% url 'siteapp:Potato' %}">Картофель</a>
+	<a href="{% url 'siteapp:Grass' %}">Многолетние травы</a>
+	<a href="{% url 'siteapp:Jim' %}">Жимолость</a>
+</nav>
+{% endblock %}

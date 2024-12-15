@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block content %}
+<h2>Продукция</h2>
+	<div class="pages" id="prod">
+		<a id="grain" href="{% url 'siteapp:Grain' %}">
+			<img src="{% static 'img/sprite_prod.jpg' %}" alt="Зерновые">
+			<strong>Зерновые</strong>
+		</a
+		><a id="potato" href="{% url 'siteapp:Potato' %}">
+			<img src="{% static 'img/sprite_prod.jpg' %}" alt="Картофель">
+			<strong>Картофель</strong>
+		</a
+		><a id="grass" href="{% url 'siteapp:Grass' %}">
+			<img src="{% static 'img/sprite_prod.jpg' %}" alt="Многолетние травы">
+			<strong>Многолетние травы</strong>
+		</a
+		><a id="jim" href="{% url 'siteapp:Jim' %}">
+			<img src="{% static 'img/sprite_prod.jpg' %}" alt="Жимолость голубая">
+			<strong>Жимолость голубая</strong>
+		</a>
+	</div>
+{% endblock %}

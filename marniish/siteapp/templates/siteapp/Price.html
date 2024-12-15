@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block content %}
+<h2>Прайс-лист</h2>
+<p>Дата обновления: 08.07.2024</p>
+<table class="pages">
+	<caption>Планируемая реализация зерновых в 2024 году</caption>
+	<tr>
+		<th>Культура</th>
+		<th>Сорт</th>
+		<th>Категория</th>
+		<th>Количество</th>,&nbsp;т</th>
+	</tr>
+	{% for price in prices %}
+	<tr>
+		<td>{{price.taxon.culture.name}}</td>
+		<td>{{price.taxon.name}}</td>
+        <td>{{price.category.name}}</td>
+		<td>{{price.mass}}</td>
+	</tr>
+	{% endfor %}
+	<tr>
+		<td colspan="4" font align="left">Все семена сертифицированы</td>
+	</tr>
+</table>
+<table class="pages">
+	<td font align="left">Для получения информации обращаться к Максимову Владимиру Алексеевичу по тел.</td>
+	<td><a  href="tel:+79600977287"><font color="#013220">8-960-097-72-87</font></a></td>
+	<b></b></td>
+</table>
+{% endblock %}

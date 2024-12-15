@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block content %}
+
+{% block nav_sub_about %}
+	{% include "nav_sub_about.html" %}
+{% endblock %}
+
+<h2>Достижения</h2>
+<div class="pages">
+	<h5>Наиболее значимые по направлениям научно-исследовательские разработки за период работы НИУ</h5>
+	<ul>
+	    {% for pr in progresses %}
+		<li><span class="{{pr.trend}}" title="{{pr.year}}"></span>{{pr.name}}</li>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}

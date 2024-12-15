@@ -1,0 +1,12 @@
+<!--Отображение пути страницы в левом углу окна-->
+{% block ways %}
+    {% if page.parent_url %}
+        <li><a href="{% url 'siteapp:parent_page' page.parent_url %}">{{page.parent_title}}</a>
+            <ul>
+                <li><a href="{% url 'siteapp:this_page' page.url %}">{{page.title}}</a></li>
+            </ul>
+        </li>
+    {% else %}
+        <li><a href="{% url 'siteapp:this_page' page.url %}">{{page.title}}</a></li>
+    {% endif %}
+{% endblock %}

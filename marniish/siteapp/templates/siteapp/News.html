@@ -1,0 +1,47 @@
+<!--Заполнение новостями НИИ-->
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Новости за {{year}} год
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block content %}
+
+{% block nav_sub_news %}
+	{% include "nav_sub_news.html" %}
+{% endblock %}
+
+<h2>Новости института за {{year}} год</h2>
+<div class="pages">
+	<div id="news_institute">
+	{% for news in newses %}
+	<article>
+		<h3>{{news.title}}</h3>
+		<time datetime="{{news.date}}">{{news.date}}</time>
+		<section>
+		{% for block in news.news_blocks.all %}
+			{% if block.content_type == 'image' %}
+				<label>
+					<input type="checkbox" hidden>
+					<img src="{{block.img.src.url}}" alt="{{block.img.alt}}">
+					<img src="{{block.img.src.url}}" alt="{{block.img.alt}}">
+					<div class="overlay"></div>
+				</label>
+			{% elif block.content_type == 'text' %}
+				<p>{{block.text|safe}}</p>
+			{% endif %}
+		{% endfor %}
+		</section>
+	</article>
+	{% endfor %}
+	</div>
+{% block news_archive %}
+	{% include "news_archive.html" %}
+{% endblock %}
+</div>
+{% endblock %}

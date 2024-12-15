@@ -1,0 +1,15 @@
+<!--Минименю внизу у подвала для блока страниц с новостями по навигации по годам-->
+{% block news_archive.html %}
+<aside id="news_archive">
+	<h3>Архив новостей</h3>
+	<a href="{% url 'siteapp:News2016' %}">2016</a>
+	<a href="{% url 'siteapp:News2017' %}">2017</a>
+	<a href="{% url 'siteapp:News2018' %}">2018</a>
+	<a href="{% url 'siteapp:News2019' %}">2019</a>
+	<a href="{% url 'siteapp:News2020' %}">2020</a>
+	<a href="{% url 'siteapp:News2021' %}">2021</a>
+	<a href="{% url 'siteapp:News2022' %}">2022</a>
+	<a href="{% url 'siteapp:News2023' %}">2023</a>
+	<a href="{% url 'siteapp:News2024' %}">2024</a>
+</aside>
+{% endblock %}

@@ -1,0 +1,23 @@
+<!--Заполнение различными сортами и гибридами культур возделываемых в НИИ-->
+{% block cultures %}
+{% load static %}
+<h2>{{group.name}}</h2>
+<div class="pages">
+	<div id="news_institute">
+	{% for taxon in taxons %}
+	<article>
+		<h3>{{taxon.culture.name}} <b>{{taxon.name}}</b></h3>
+		<section>
+			{% if taxon.img %}
+			<label>
+				<input type="checkbox" hidden>
+				<img src="{{taxon.img.url}}" alt="{{taxon.alt}}" title="{{taxon.alt}}">
+				<img src="{{taxon.img.url}}" alt="{{taxon.alt}}" title="{{taxon.alt}}">
+				<div class="overlay"></div>
+			</label>
+			{% endif %}
+			{{taxon.text|safe}}
+		</section>
+	</article>
+	{% endfor %}
+{% endblock %}
