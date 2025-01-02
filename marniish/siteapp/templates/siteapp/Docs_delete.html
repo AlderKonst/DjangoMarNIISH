@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block ways_header %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block ways_nav %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block content %}
+<h2>{{page.title}}</h2>
+<table class="pages">
+	<tr>
+		<th>Дата</th>
+		<th class="left">Название документа</th>
+		<th><b class="download"></b></th>
+	</tr>
+	<tr>
+		<td class="time">{{one_doc.date|date:"j M Y"}}</td>
+		<td class="left">{{one_doc.name}}</td>
+		<td><a href="{{one_doc.url.url}}" target="_blank" title="Скачать" download></a></td>
+	</tr>
+</table>
+<div class="pages niicontact">
+	<fieldset>
+		<legend>Вы уверены, что хотите удалить"?</legend>
+		<form name="DocsAddForm" method="post">
+			{% csrf_token %}
+			<input type="submit" id="submit" value="Удалить"/>
+		</form>
+	</fieldset>
+</div>
+<div class="pages" id="news_institute">
+	<a href="{% url 'siteapp:Docs_editing' %}">Отменить удаление</a>
+</div>
+<table class="pages">
+	<tr>
+		<th>Дата</th>
+		<th class="left">Название документа</th>
+		<th><b class="download"></b></th>
+	</tr>
+	{% for doc in docs %}
+	<tr>
+		<td class="time">{{doc.date|date:"j M Y"}}</td>
+	    <td class="left">{{doc.name}}</td>
+	    <td><a href="{{doc.url.url}}" target="_blank" title="Скачать" download></a></td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}

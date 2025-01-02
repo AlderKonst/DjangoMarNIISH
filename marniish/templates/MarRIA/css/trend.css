@@ -1,0 +1,109 @@
+@charset "UTF-8";
+.nav_sub span {
+	white-space: nowrap;
+}
+@media (min-width: 38em){
+	.nav_sub {
+		font-size: 1em;
+	}
+}
+.pages ul {
+	position: relative;
+	margin-left: 3em;
+	padding: 0 .5em 0 1.29em;
+	font-size: .875em;
+	color: #060; /*тёмно-зелёный*/
+	border-left: .15em solid #090; /*зелёный*/
+	border-right: 1px solid #090; /*зелёный*/
+	border-radius: 0 .5em .5em 0;
+	box-shadow: inset -4px 0 3px -4px #090; /*зелёный*/
+}
+span[title]:before,
+.pages ul li span,
+.pages ul li:after {
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto 0;
+}
+span[title]:before {
+	top: .5em;
+	left: -2.5em;
+	content: attr(title);
+	font-weight: 700;
+}
+.pages ul:after {
+	display: block;
+	height: .5em;
+	content: '';
+}
+.pages ul li {
+	position: relative;
+	margin-bottom: .5em;
+	padding: 1%;
+	background: #fff;
+	background: rgba(255,255,255,.8	);
+	box-shadow: inset 0 0 0 2px #0a0; /*зелёный*/
+	border-radius: .5em;
+}
+.pages ul li:last-child {
+	margin: 0;
+}
+.pages li span {
+	width: 2.29em;
+	height: 2.29em;
+	left: -2.5em;
+	background: #fff url(../img/sprite_trend.png) no-repeat -3% 50%;
+	background-size: auto 1.79em;
+	border: .15em solid #090; /*зелёный*/
+	border-radius: 50%;
+	z-index: 6;
+}
+.pages .land {
+	background-position-x: 32%;
+}
+.pages .zoo {
+	background-position: 66% 80%;
+}
+.pages .bird {
+	background-position: 102% 60%;
+}
+.pages ul li:before {
+	display: inline-block;
+	width: 5%;
+	content: '';
+}
+.pages ul li:after {
+	height: 0;
+	left: -1.64em;
+	content: '';
+	border: .29em solid #090; /*зелёный*/
+	border-radius: 50%;
+	z-index: 5;
+}
+@media (min-width: 38em){
+	.pages ul {
+		font-size: 1em;
+	}
+	.pages ul li:after {
+		border-width: .325em;
+	}
+	span[title]:before {
+		left: -3em;
+}
+@media (min-width: 74em){
+	.pages ul {
+		margin-left: -2em;
+		padding-left: 2em;
+	}
+	.pages ul li:after {
+		left: -2.375em;
+	}
+	.pages ul li span {
+		left: -3.25em;
+	}
+	span[title]:before {
+		left: -3em;
+	}
+}

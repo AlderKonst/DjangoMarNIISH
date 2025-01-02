@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block ways_header %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block ways_nav %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block content %}
+
+<nav class="nav_sub">
+	<span>Ещё ↑</span>
+{% block nav_sub_news %}
+	{% include "nav_sub_news.html" %}
+{% endblock %}
+</nav>
+
+<h2>{{page.title}}</h2>
+<div class="pages">
+	<div id="news_institute">
+		<article>
+			<h3>{{deleted.date}}</h3>
+			<section>
+				<label>
+					<input type="checkbox" hidden>
+					<img src="{{deleted.src.url}}" alt="{{deleted.alt}}">
+					<img src="{{deleted.src.url}}" alt="{{deleted.alt}}">
+					<div class="overlay"></div>
+				</label>
+				<p>Описание: {{deleted.alt}}</p>
+			</section>
+		</article>
+		<fieldset class="niicontact">
+			<legend>Вы подтверждаете удаления этой картинки?</legend>
+			<form method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<input type="submit" id="submit" value="Удалить">
+			</form>
+		</fieldset>
+		<a href="{% url 'siteapp:News_picture_editing' %}">Отменить удаление</a>
+	{% for picture in pictures %}
+	<article>
+		<h3>{{picture.date}}</h3>
+		<section>
+			<label>
+				<input type="checkbox" hidden>
+				<img src="{{picture.src.url}}" alt="{{picture.alt}}">
+				<img src="{{picture.src.url}}" alt="{{picture.alt}}">
+				<div class="overlay"></div>
+			</label>
+			<p>Описание: {{picture.alt}}</p>
+		</section>
+	</article>
+	{% endfor %}
+	</div>
+</div>
+{% endblock %}

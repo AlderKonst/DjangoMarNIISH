@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block ways_header %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block ways_nav %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% block nav_sub_prod %}
+	{% include "nav_sub_prod.html" %}
+{% endblock %}
+
+<h2>{{page.title}}</h2>
+<div class="pages" id="news_institute">
+	<article>
+		<fieldset class="niicontact">
+			<form method="post">
+				{% csrf_token %}
+				{{form.as_p}}
+				<input type="submit" id="submit" value="Cохранить">
+			</form>
+		</fieldset>
+		<a href="{% url 'siteapp:Taxon_editing' %}">Отменить изменение</a>
+		{% for taxon in taxons %}
+			<p>{{taxon.culture.group.name}}: {{taxon.culture.name}} <b>{{taxon.name}}</b></p>
+		{% endfor %}
+	</article>
+</div>
+{% endblock %}

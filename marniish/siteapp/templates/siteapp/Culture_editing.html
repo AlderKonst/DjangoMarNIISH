@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block ways_header %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block ways_nav %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% block nav_sub_prod %}
+	{% include "nav_sub_prod.html" %}
+{% endblock %}
+
+<h2>{{page.title}}</h2>
+	<div class="pages" id="news_institute">
+		<article>
+			<fieldset class="niicontact">
+				<form method="post">
+					{% csrf_token %}
+					{{form.as_p}}
+					<input type="submit" id="submit" value="Добавить">
+				</form>
+			</fieldset>
+			<a href="{% url 'siteapp:Culture_group_editing' %}">Редактировать список групп культур</a>
+			<a href="{% url 'siteapp:Taxon_editing' %}">Назад к редактированию таксонов</a>
+			{% for culture in cultures %}
+				<p>{{culture.group.name}} <b>{{culture.name}}</b></p>
+				<a href="{% url 'siteapp:Culture_delete' culture.pk %}">Удалить</a
+				><a href="{% url 'siteapp:Culture_update' culture.pk %}">Изменить</a>
+			{% endfor %}
+		</article>
+	</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block ways_header %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block ways_nav %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% block nav_sub_prod %}
+	{% include "nav_sub_prod.html" %}
+{% endblock %}
+
+<h2>{{page.title}}</h2>
+	<div class="pages" id="news_institute">
+		<article>
+			<a href="{% url 'siteapp:Culture_editing' %}">Назад на редактирование списка культур</a>
+			<a href="{% url 'siteapp:Prod' %}">Завершить редактирование</a>
+			{% for group in groups %}
+				<p><b>{{group.name}}</b></p>
+				<a href="{% url 'siteapp:Culture_group_update' group.pk %}">Изменить</a>
+			{% endfor %}
+		</article>
+	</div>
+{% endblock %}

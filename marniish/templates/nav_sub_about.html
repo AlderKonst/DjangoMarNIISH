@@ -1,0 +1,10 @@
+<!-- Минименю для блока страниц об НИИ под главным меню -->
+{% block nav_sub_about %}
+<nav class="nav_sub">
+	<span>О нас ещё ↑</span>
+	<a href="{% url 'siteapp:About' %}">История института</a>
+	<a href="{% url 'siteapp:Trend' %}">Направления деятельности</a>
+	<a href="{% url 'siteapp:Progress' %}">Достижения</a>
+	<a href="{% url 'siteapp:Article' %}">Статьи</a>
+</nav>
+{% endblock %}

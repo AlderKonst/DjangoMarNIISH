@@ -1,0 +1,53 @@
+<!--Заполнение новостями НИИ-->
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block ways_header %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block ways_nav %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block content %}
+
+<nav class="nav_sub">
+	<span>Ещё ↑</span>
+{% block nav_sub_news %}
+	{% include "nav_sub_news.html" %}
+{% endblock %}
+</nav>
+
+<h2>Новости института</h2>
+<div class="pages">
+	<div id="news_institute">
+	{% for news in newses %}
+	<article>
+		<h3>{{news.title}}</h3>
+		<time datetime="{{news.date}}">{{news.date}}</time>
+		<section>
+			{% for img in news.img.all %}
+			<label>
+				<input type="checkbox" hidden>
+				<img src="{{img.src.url}}" alt="{{img.alt}}">
+				<img src="{{img.src.url}}" alt="{{img.alt}}">
+				<div class="overlay"></div>
+			</label>
+			{% endfor %}
+			<p>{{news.text|safe}}</p>
+		</section>
+	</article>
+	{% endfor %}
+	<a href="{% url 'siteapp:News_editing' %}">Редактировать</a>
+	</div>
+</div>
+{% endblock %}

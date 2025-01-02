@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block ways_header %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block ways_nav %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% block nav_sub_about %}
+	{% include "nav_sub_about.html" %}
+{% endblock %}
+
+<h2>{{page.title}}</h2>
+<div class="pages">
+	<div id="news_institute">
+	<article>
+		<h3><b>Основные направления деятельности</b></h3>
+		<div class="slides">
+				<div id="m1"></div><div id="m2"></div>
+				<img id="slide_3" src="{% static 'img/sprite_slide.jpg' %}">
+				<img id="slide_2" src="{% static 'img/sprite_slide.jpg' %}">
+				<img id="slide_1" src="{% static 'img/sprite_slide.jpg' %}">
+			</div>
+		<section>
+			<ol>
+			{% for li in lis %}
+				<li>{{li.name}}</li>
+			{% endfor %}
+			</ol>
+			<a href="{% url 'siteapp:Trend_editing' %}">Редактировать</a>
+		</section>
+	</article>
+	</div>
+</div>
+{% endblock %}

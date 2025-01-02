@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block ways_header %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block ways_nav %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block content %}
+<h2>{{page.title}}</h2>
+<div class="pages niicontact">
+	<fieldset>
+		<form name="DocsAddForm" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			{% for item in form %}
+			<tr>{{item}}</tr>
+			{% endfor %}
+			<input type="submit" value="Добавить"/>
+		</form>
+	</fieldset>
+</div>
+<div class="pages" id="news_institute">
+	<a href="{% url 'siteapp:Docs' %}">Завершить редактирование</a>
+</div>
+<table class="pages">
+	<tr>
+		<th>Дата</th>
+		<th class="left">Название документа</th>
+		<th><b class="download"></b></th>
+	</tr>
+	{% for doc in docs %}
+	<tr>
+		<td class="time">{{doc.date|date:"j M Y"}}</td>
+	    <td class="left">{{doc.name}}
+			<article id="news_institute" style="margin: 0; padding: 0;">
+				<a href="{% url 'siteapp:Docs_delete' doc.pk %}">Удалить</a
+				><a href="{% url 'siteapp:Docs_update' doc.pk %}">Изменить</a>
+			</article>
+		</td>
+	    <td><a href="{{doc.url.url}}" target="_blank" title="Скачать" download></a></td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}

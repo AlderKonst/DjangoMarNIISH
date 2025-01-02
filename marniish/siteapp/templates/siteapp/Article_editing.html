@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block ways_header %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block ways_nav %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% block nav_sub_about %}
+	{% include "nav_sub_about.html" %}
+{% endblock %}
+
+<h2>{{page.title}}</h2>
+<div class="pages" id="news_institute">
+	<article >
+		<fieldset class="niicontact">
+			<form method="post">
+				{% csrf_token %}
+				{{form.as_p}}
+				<input type="submit" id="submit" value="Добавить"/>
+			</form>
+		</fieldset>
+		<a href="{% url 'siteapp:Article' %}">Завершить редактирование</a>
+	</article>
+		<ul>
+		{% for ale in articles %}
+		<li>
+			<span class="{{ale.trend}}" title="{{ale.year}}"></span>{{ale.name}}
+			{% if ale.doi %}
+			<p>DOI: {{ale.doi}}</p>
+			{% elif ale.link %}
+			<p>URL: {{ale.link}}</p>
+			{% else %}
+			<p></p>
+			{% endif %}
+		</li>
+		<article>
+			<a href="{% url 'siteapp:Article_update' ale.pk %}">Изменить</a
+			><a href="{% url 'siteapp:Article_delete' ale.pk %}">Удалить</a>
+		</article>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}

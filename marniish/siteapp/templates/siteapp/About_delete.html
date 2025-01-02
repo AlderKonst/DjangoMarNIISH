@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block ways_header %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block ways_nav %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block content %}
+<h2>{{page.title}}</h2>
+<div class="pages">
+	<div id="news_institute">
+	<div class="niicontact">
+		<article>
+			<h3>{{paragraph.data.year}} год
+				{% if paragraph.data.day_month %}
+				<b>{{paragraph.data.day_month}}</b>
+				{% endif %}
+			</h3>
+			<section>
+			{% if paragraph.img %}
+			<label>
+				<img src="{% static paragraph.img %}" alt="{{paragraph.alt}}" title="{{paragraph.alt}}">
+			</label>
+			{% endif %}
+			<p>{{paragraph.text}}</p>
+			</section>
+		</article>
+	<fieldset>
+	    <legend>Подтверждаете ли удаление абзаца события?</legend>
+	    <form method="post">
+	        {% csrf_token %}
+	        <input type="submit" value="Удалить">
+	    </form>
+	</fieldset>
+	</div>
+	<a href="{% url 'siteapp:About_editing' %}">Отменить удаление</a>
+	<article>
+		<h2 id="in">Этапы становления, развития и преемственности института</h2>
+	</article>
+		{% for d in data %}
+		<article>
+			<h3>{{d.year}} год
+				{% if d.day_month %}
+				<b>{{d.day_month}}</b>
+				{% endif %}
+			</h3>
+			<section>
+			{% for about in histories %}
+				{% if about.data.year == d.year and about.data.day_month == d.day_month %}
+					{% if about.img %}
+					<label>
+						<input type="checkbox" hidden>
+						<img src="{% static about.img %}" alt="{{about.alt}}">
+						<img src="{% static about.img %}" alt="{{about.alt}}" title="{{about.alt}}">
+						<div class="overlay"></div>
+					</label>
+					{% endif %}
+				<p>{{about.text}}</p>
+				{% endif %}
+			{% endfor %}
+			</section>
+		</article>
+	{% endfor %}
+	</div>
+</div>
+{% endblock %}

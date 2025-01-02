@@ -1,0 +1,8 @@
+<!--Отображение пути страницы в левом углу окна-->
+{% block ways %}
+<li><a href="{% url 'siteapp:News_last' %}">{{page.parent_title}}</a>
+    <ul>
+        <li><a href="{% url 'siteapp:News' year %}">{{page.title}}</a></li>
+    </ul>
+</li>
+{% endblock %}

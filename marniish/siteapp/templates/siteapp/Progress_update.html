@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block ways_header %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block ways_nav %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% block nav_sub_about %}
+	{% include "nav_sub_about.html" %}
+{% endblock %}
+
+<h2>{{page.title}}</h2>
+<div class="pages" id="news_institute">
+	<article>
+		<fieldset class="niicontact">
+			<legend>Изменение достижений</legend>
+			<form method="post">
+				{% csrf_token %}
+				{{form.as_p}}
+				<input type="submit" id="submit" value="Изменить"/>
+			</form>
+		</fieldset>
+		<a href="{% url 'siteapp:Progress_editing' %}">Отменить изменение</a>
+	</article>
+	<h5>Наиболее значимые по направлениям научно-исследовательские разработки за период работы НИУ</h5>
+	<ul>
+	    {% for pr in progresses %}
+		<li><span class="{{pr.trend}}" title="{{pr.year}}"></span>{{pr.name}}</li>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}

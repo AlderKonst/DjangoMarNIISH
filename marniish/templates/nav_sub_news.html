@@ -1,0 +1,6 @@
+<!--Минименю для блока страниц с новостями по навигации по годам-->
+{% block nav_sub_news.html %}
+{% for yr in all_years %}
+    <a href="{% url 'siteapp:News' yr %}">{{yr}}</a>
+{% endfor %}
+{% endblock %}

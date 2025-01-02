@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block ways_header %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block ways_nav %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% block nav_sub_about %}
+	{% include "nav_sub_about.html" %}
+{% endblock %}
+
+<h2>История института</h2>
+<div class="pages">
+	<div id="news_institute">
+	<article>
+		<p>Марийский научно-исследовательский институт сельского хозяйства – филиал Федерального государственного бюджетного научного учреждения «Федеральный аграрный научный центр Северо-Востока имени Н.В. Рудницкого» является правопреемником ФГБНУ Марийский НИИСХ, созданным <b>30 декабря 2013 года</b>, а ранее – ГНУ Марийский НИИСХ Россельхозакадемии <b>4 января 1989 года</b>, который в свою очередь, является правопреемником Марийской государственной республиканской сельскохозяйственной опытной станции, созданной в <b>1956 году</b> на базе Марийской опытной станции по полеводству, организованной в соответствии с постановлением Совета народных комиссаров СССР от <b>22 декабря 1936 года</b> постановлением Исполкома Марийской АССР и приказа Земельного управления при Наркомземе Марийской АССР от <b>19 февраля 1937 г.</b> № 28.</p>
+	</article>
+	<article>
+		<h2 id="in">Этапы становления, развития и преемственности института</h2>
+		<a href="{% url 'siteapp:About_editing' %}">Редактировать</a>
+	</article>
+	{% for d in data %}
+	<article>
+		<h3>{{d.year}} год
+			{% if d.day_month %}
+			<b>{{d.day_month}}</b>
+			{% endif %}
+		</h3>
+		<section>
+		{% for about in histories %}
+			{% if about.data.year == d.year and about.data.day_month == d.day_month %}
+				{% if about.img %}
+				<label>
+					<input type="checkbox" hidden>
+					<img src="{% static about.img %}" alt="{{about.alt}}">
+					<img src="{% static about.img %}" alt="{{about.alt}}" title="{{about.alt}}">
+					<div class="overlay"></div>
+				</label>
+				{% endif %}
+			<p>{{about.text}}</p>
+			{% endif %}
+		{% endfor %}
+		</section>
+	</article>
+	{% endfor %}
+	</div>
+</div>
+{% endblock %}

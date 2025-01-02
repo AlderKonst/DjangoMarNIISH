@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block ways_header %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block ways_nav %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% block nav_sub_prod %}
+	{% include "nav_sub_prod.html" %}
+{% endblock %}
+
+<h2>{{page.title}}</h2>
+	<div class="pages" id="news_institute">
+		<article>
+			<fieldset class="niicontact">
+				<legend>Вы уверены, что хотите удалить {{deleted.name}} из {{deleted.group.name}}?</legend>
+				<form method="post">
+					{% csrf_token %}
+					<input type="submit" id="submit" value="Удалить">
+				</form>
+			</fieldset>
+			<a href="{% url 'siteapp:Culture_editing' %}">Отменить изменение</a>
+			{% for culture in cultures %}
+				<p>{{culture.group.name}} <b>{{culture.culture.name}}</b></p>
+			{% endfor %}
+		</article>
+	</div>
+{% endblock %}

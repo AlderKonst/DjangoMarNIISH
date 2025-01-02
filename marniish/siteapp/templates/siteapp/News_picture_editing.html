@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block ways_header %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block ways_nav %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block content %}
+
+<nav class="nav_sub">
+	<span>Ещё ↑</span>
+{% block nav_sub_news %}
+	{% include "nav_sub_news.html" %}
+{% endblock %}
+</nav>
+
+<h2>{{page.title}}</h2>
+<div class="pages">
+	<div id="news_institute">
+		<fieldset class="niicontact">
+			<form method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{form.as_p}}
+				<input type="submit" id="submit" value="Добавить">
+			</form>
+		</fieldset>
+		<a href="{% url 'siteapp:News_editing' %}">Завершить редактирование</a>
+	{% for picture in pictures %}
+	<article>
+		<h3>{{picture.date}}</h3>
+		<section>
+			<label>
+				<input type="checkbox" hidden>
+				<img src="{{picture.src.url}}" alt="{{picture.alt}}">
+				<img src="{{picture.src.url}}" alt="{{picture.alt}}">
+				<div class="overlay"></div>
+			</label>
+			<p>Описание: {{picture.alt}}</p>
+			<a href="{% url 'siteapp:News_picture_delete' picture.pk %}">Удалить</a
+			><a href="{% url 'siteapp:News_picture_update' picture.pk %}">Изменить</a>
+		</section>
+	</article>
+	{% endfor %}
+	</div>
+</div>
+{% endblock %}

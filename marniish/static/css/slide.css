@@ -1,0 +1,114 @@
+@charset "utf-8";
+@keyframes img-1 {
+	from {opacity: 1;}
+	26% {opacity: 1;}
+	33% {opacity: 0;}
+	93% {opacity: 0;}
+	to {opacity: 1;}
+}
+@-webkit-keyframes img-1 {
+	from {opacity: 1;}
+	26% {opacity: 1;}
+	33% {opacity: 0;}
+	93% {opacity: 0;}
+	to {opacity: 1;}
+}
+@-o-keyframes img-1 {
+	from {opacity: 1;}
+	26% {opacity: 1;}
+	33% {opacity: 0;}
+	93% {opacity: 0;}
+	to {opacity: 1;}
+}
+@keyframes img-2 {
+	from {opacity: 0;}
+	26% {opacity: 0;}
+	33% {opacity: 1;}
+	60% {opacity: 1;}
+	66% {opacity: 0;}
+	to {opacity: 0;}
+}
+@-webkit-keyframes img-2 {
+	from {opacity: 0;}
+	26% {opacity: 0;}
+	33% {opacity: 1;}
+	60% {opacity: 1;}
+	66% {opacity: 0;}
+	to {opacity: 0;}
+}
+@-o-keyframes img-2 {
+	from {opacity: 0;}
+	26% {opacity: 0;}
+	33% {opacity: 1;}
+	60% {opacity: 1;}
+	66% {opacity: 0;}
+	to {opacity: 0;}
+}
+@keyframes img-3 {
+	from {opacity: 0;}
+	60% {opacity: 0;}
+	66% {opacity: 1;}
+	93% {opacity: 1;}
+	to {opacity: 0;}
+}
+@-webkit-keyframes img-3 {
+	from {opacity: 0;}
+	60% {opacity: 0;}
+	66% {opacity: 1;}
+	93% {opacity: 1;}
+	to {opacity: 0;}
+}
+@-o-keyframes img-3 {
+	from {opacity: 0;}
+	60% {opacity: 0;}
+	66% {opacity: 1;}
+	93% {opacity: 1;}
+	to {opacity: 0;}
+}
+.slide_bg {
+	background-color: forestgreen;
+}
+.slides {
+	position: relative;
+	max-width: 30em;
+	margin: .25em;
+	overflow: hidden;
+	float: right;
+	line-height: 0;
+	border: .5em solid #4c4; /*лесно-зелёный*/
+	border-color: rgba(60,200,60,.5); /*лесно-зелёный*/
+	border-radius: .5em;
+}
+.slides img {
+	position: absolute;
+	width: 300%;
+	animation-duration: 30s;
+	-webkit-animation-duration: 30s;
+	-o-animation-duration: 30s;
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+	-o-animation-iteration-count: infinite;
+}
+.slides #slide_1 {
+	position: relative;
+	animation-name: img-1;
+	-webkit-animation-name: img-1;
+	-o-animation-name: img-1;
+}
+.slides #slide_2 {
+	left: -100%;
+	animation-name: img-2;
+	-webkit-animation-name: img-2;
+	-o-animation-name: img-2;
+}
+.slides #slide_3 {
+	left: -200%;
+	animation-name: img-3;
+	-webkit-animation-name: img-3;
+	-o-animation-name: img-3;
+}
+.slides div { /*Не готово тут */
+		position: absolute;
+		top: 0;
+		z-index: 2;
+}

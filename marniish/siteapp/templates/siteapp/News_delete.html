@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block ways_header %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block ways_nav %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block content %}
+
+<nav class="nav_sub">
+	<span>Ещё ↑</span>
+{% block nav_sub_news %}
+	{% include "nav_sub_news.html" %}
+{% endblock %}
+</nav>
+
+<h2>{{page.title}}</h2>
+<div class="pages">
+	<div id="news_institute">
+		<fieldset class="niicontact">
+			<legend>Вы подтверждаете удаления события {{deleted.date}} «{{deleted.title}}»?</legend>
+			<form method="post">
+				{% csrf_token %}
+				<input type="submit" id="submit" value="Удалить">
+			</form>
+		</fieldset>
+		<a href="{% url 'siteapp:News_editing' %}">Отменить удаление</a>
+	{% for news in newses %}
+	<article>
+		<h3>{{news.title}}</h3>
+		<time datetime="{{news.date}}">{{news.date}}</time>
+	</article>
+	{% endfor %}
+	</div>
+</div>
+{% endblock %}

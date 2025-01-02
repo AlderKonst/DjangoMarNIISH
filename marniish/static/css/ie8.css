@@ -1,0 +1,172 @@
+@charset "UTF-8";
+.nav_side {
+	left: 0;
+	overflow-y: auto;
+}
+.maket,
+footer {
+	margin-left: 23em;
+}
+.burger,
+.cross,
+.phone:before,
+.author .fonts_ico:after,
+.author a:hover:after,
+.author a:focus:after {
+	display: none;
+}
+h1 {
+	font-size: 1.375em;
+}
+.tel {
+	width: 13.5em;
+	height: 2.5em;
+	top: -3.125em;
+	left: 30em;
+	margin-bottom: -2.5em;
+	line-height: 2.5em;
+}
+.tel span {
+	width: 4em;
+}
+.tel strong {
+	top: 0;
+	font-size: 1em;
+}
+.tel:after,
+.tel span:after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -.75em;
+	border: 1.25em solid #090; /*зелёный*/
+	border-left: none;
+	border-right: .875em solid #080; /*тёмно-зелёный*/
+}
+.tel span:after {
+	right: 0;
+	border: 1.25em solid transparent;
+	border-left: none;
+	border-right: .875em solid #fff;
+}
+.tel .phone {
+	left: -.75em;
+}
+.phone {
+	overflow: visible;
+}
+.phone i {
+	width: 1em;
+	height: 100%;
+	left: .2em;
+}
+.phone:after {
+	width: 0;
+	height: .2em;
+	top: -.4em;
+	left: .5em;
+	border: .1em solid #fff;
+}
+#expo {
+	min-width: 45em;
+	min-height: 9em;
+}
+main,
+footer {
+	min-width: 50em;
+}
+.areas h2 > span {
+	width: 29em;
+}
+h2,
+.areas h2 span span {
+	height: 3em;
+	line-height: 3em;
+	font-size: 1em;
+}
+.areas h2 span span {
+	width: 14.5em;
+	text-align: inherit;
+}
+.areas h2 span span:last-child {
+	margin: -3em 0 0 14.5em;
+}
+.areas > div {
+	width: 95%;
+	max-width: 60em;
+}
+.areas div div {
+	margin: .5em auto 0;
+	float: none;
+}
+.areas div span {
+	width: 24%;
+	height: 6em;
+	text-align: center;
+}
+.areas strong {
+	margin: 0;
+}
+#plant {
+	margin: .5em 0 0 0;
+}
+#land {
+	margin: .5em 0 0 1.33%;
+}
+#zoo {
+	margin: -6em 0 0 50.67%;
+}
+#bird {
+	margin: -6em 0 0 76%;
+}
+.maket {
+	padding-bottom: 15em;
+}
+footer {
+	height: 15em;
+	margin: -15em 0 0 22em;
+}
+.contacts div {
+	float: left;
+}
+.contacts div:last-child,
+.author {
+	margin-left: 0;
+}
+.author {
+	float: right;
+}
+.contacts .phone:after {
+	border-color: #fa0; /*оранжевый*/
+}
+.fonts_ico img {
+	display: inline-block;
+	height: 1em;
+}
+#news label { /*Новости*/
+	float: left;
+	margin-right: .75em;
+}
+table.pages {
+	width: 90%;
+}
+td {
+	font-size: .875em;
+}
+#prod { /*Продукция*/
+	margin: 0 auto;
+	max-width: 40.5em;
+}
+#prod a {
+	color: inherit;
+	width: 20em;
+}
+#prod strong {
+	font-weight: 700;
+	font-variant: small-caps;
+	}
+#potato,
+#jim {
+	margin: -6.75em 0 0 20.5em;
+}

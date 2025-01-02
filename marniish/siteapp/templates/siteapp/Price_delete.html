@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+{% block description %}
+	{{page.description}}
+{% endblock %}
+
+{% block ways_header %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block ways_nav %}
+    {% include "ways.html" %}
+{% endblock %}
+
+{% block content %}
+<h2>{{page.title}}</h2>
+<div class="pages" id="news_institute">
+	<article>
+		<fieldset class="niicontact">
+			<legend>Вы уверены, что хотите удалить эту строку?</legend>
+			<form method="post">
+				{% csrf_token %}
+				<input type="submit" id="submit" value="Удалить">
+			</form>
+		</fieldset>
+		<a href="{% url 'siteapp:Price_editing' %}">Отменить удаление</a>
+	</article>
+</div>
+<table class="pages">
+	<caption>Планируемая реализация зерновых в текущем году</caption>
+	<tr>
+		<th>Культура</th>
+		<th>Сорт</th>
+		<th>Категория</th>
+		<th>Количество,&nbsp;т</th>
+	</tr>
+	{% for price in prices %}
+	<tr>
+		<td>{{price.taxon.culture.name}}</td>
+		<td>{{price.taxon.name}}</td>
+        <td>{{price.category.name}}</td>
+		<td>{{price.mass}}</td>
+	</tr>
+	{% endfor %}
+	<tr>
+		<td colspan="4" font align="left">Все семена сертифицированы</td>
+	</tr>
+</table>
+<table class="pages">
+	<td font align="left">Для получения информации обращаться к Максимову Владимиру Алексеевичу по тел.</td>
+	<td><a  href="tel:+79600977287"><font color="#013220">8-960-097-72-87</font></a></td>
+</table>
+{% endblock %}
